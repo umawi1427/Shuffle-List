@@ -5,7 +5,7 @@ const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const formBtn = itemForm.querySelector('button');
 const randomBtn = document.getElementById('random-btn');
-const randomDisplay = document.getElementById('random-display'); // Added this line
+const randomDisplay = document.getElementById('random-display');
 const modal = document.getElementById('myModal');
 const modalMessage = document.getElementById('modal-message');
 const deleteBtn = document.getElementById('delete-btn');
@@ -181,10 +181,16 @@ function showToast(message) {
   }, 3000);
 }
 
+// Updated deleteBtn event listener to show a toast for item deletion
 deleteBtn.addEventListener('click', () => {
   removeItemFromStorage(currentRandomItem);
   displayItems();
   modal.style.display = 'none';
+
+  // Show a toast to confirm deletion
+  showToast(`Item "${currentRandomItem}" deleted successfully!`);
+
+  // Generate a new random item after deletion
   generateRandomItem();
 });
 
